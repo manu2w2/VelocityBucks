@@ -1,43 +1,47 @@
 <script lang="ts">
 	/**
 	 * SectionTitle — Jerarquía tipográfica oficial Velocity Bucks
-	 *
-	 * Estructura visual basada en el manual de identidad:
-	 *   TÍTULO GRANDE    ← Rajdhani Light, all-caps, tracking amplio (eyebrow o title)
-	 *   SUBTÍTULO DORADO ← Chakra Petch Bold, uppercase, color gold (accent)
-	 *   Párrafo cuerpo   ← Montserrat Regular, color steel
+	 *   eyebrow  ← Chakra Petch, dorado, con guion técnico
+	 *   TÍTULO   ← Rajdhani Light, all-caps, tracking amplio (h1/h2 real)
+	 *   ACENTO   ← Chakra Petch Bold, dorado
+	 *   párrafo  ← Montserrat, acero
 	 */
-
 	interface Props {
-		/** Label pequeño sobre el título — Chakra Petch, dorado, tracking */
 		eyebrow?: string;
-		/** Título principal — Rajdhani Light, all-caps, tracking amplio */
 		title: string;
-		/** Subtítulo dorado bold — Chakra Petch Bold, uppercase, gold */
 		accent?: string;
-		/** Párrafo descriptivo — Montserrat Regular */
 		subtitle?: string;
 		align?: 'left' | 'center';
+		/** Nivel semántico del título */
+		level?: 'h1' | 'h2';
+		/** id del título, para aria-labelledby en la sección */
+		id?: string;
 	}
 
-	let { eyebrow, title, accent, subtitle, align = 'left' }: Props = $props();
+	let { eyebrow, title, accent, subtitle, align = 'left', level = 'h2', id }: Props = $props();
 </script>
 
 <div class="section-title" class:center={align === 'center'}>
 	{#if eyebrow}
-		<p class="eyebrow">{eyebrow}</p>
+		<p class="vb-eyebrow">{eyebrow}</p>
 	{/if}
 
-	<!-- H1-style: Rajdhani, all-caps, tracking amplio — como "OUR ROBOT", "IMPACT" -->
-	<p class="title-display">{title}</p>
+	<div class="pair">
+		<svelte:element
+			this={level}
+			{id}
+			class="vb-display {level === 'h1' ? 'vb-display--l' : 'vb-display--m'}"
+		>
+			{title}
+		</svelte:element>
 
-	{#if accent}
-		<!-- H2-style: Chakra Petch Bold, gold — como "PROCESO DE INGENIERÍA", "BEYOND ROBOTICS" -->
-		<p class="title-accent">{accent}</p>
-	{/if}
+		{#if accent}
+			<p class="vb-accent">{accent}</p>
+		{/if}
+	</div>
 
 	{#if subtitle}
-		<p class="title-subtitle">{subtitle}</p>
+		<p class="vb-lead subtitle">{subtitle}</p>
 	{/if}
 </div>
 
@@ -45,60 +49,22 @@
 	.section-title {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		align-items: flex-start;
+		gap: var(--space-5);
 	}
 
-	.section-title.center {
+	.pair {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+
+	.center {
 		align-items: center;
 		text-align: center;
 	}
 
-	/* Eyebrow — Chakra Petch, dorado, tracking, uppercase */
-	.eyebrow {
-		font-family: var(--font-accent);
-		font-size: 0.7rem;
-		font-weight: 500;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--color-vb-gold);
-		margin: 0;
-	}
-
-	/* Título principal — Rajdhani Light, all-caps, tracking amplio */
-	.title-display {
-		font-family: var(--font-display);
-		font-weight: 300;
-		font-size: clamp(2rem, 5vw, 3.5rem);
-		line-height: 1;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: #fff;
-		margin: 0;
-	}
-
-	/* Subtítulo dorado — Chakra Petch Bold, gold, uppercase */
-	.title-accent {
-		font-family: var(--font-accent);
-		font-weight: 700;
-		font-size: clamp(0.9rem, 1.8vw, 1.2rem);
-		line-height: 1.1;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-		color: var(--color-vb-gold);
-		margin: 0;
-	}
-
-	/* Párrafo descriptivo — Montserrat */
-	.title-subtitle {
-		font-family: var(--font-body);
-		font-size: 0.95rem;
-		color: var(--color-vb-steel);
-		line-height: 1.7;
-		margin: 0.5rem 0 0;
-		max-width: 56ch;
-	}
-
-	.center .title-subtitle {
-		max-width: 48ch;
+	.center .subtitle {
+		max-width: 50ch;
 	}
 </style>

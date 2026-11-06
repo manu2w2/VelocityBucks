@@ -1,137 +1,153 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────
-   VELOCITY BUCKS #39347 — Design System Tokens
-   Typography: Rajdhani / Chakra Petch / Montserrat
+   VELOCITY BUCKS #39347 — Sistema de diseño
+   Concepto: "Ficha técnica en movimiento"
+   Tipografía: Rajdhani (display) / Chakra Petch (acento) / Montserrat (cuerpo)
    ───────────────────────────────────────────── */
 
 @theme {
-  /* ── Paleta de Color ── */
-  --color-vb-gold:       #D0B549;
+  /* ── Paleta de marca (identidad original, sin cambios) ── */
+  --color-vb-gold:       #D0B549; /* Color principal del equipo */
   --color-vb-dark:       #222222;
   --color-vb-white:      #FFFFFF;
   --color-vb-steel:      #AEB3B8;
   --color-vb-gold-light: #F1E5AE;
   --color-vb-gold-deep:  #8E782B;
-  --color-vb-gray-mid:   #9A9A9A; /* Para fondos grises medios como en los mockups */
+  --color-vb-gray-mid:   #9A9A9A;
+  /* Derivado del oro profundo: solo para texto sobre paneles oro/acero (contraste AA) */
+  --color-vb-gold-ink:   #4A3E14;
 
-  /* ── Tipografía (actualizada a identidad oficial) ──
-     Rajdhani     → Títulos H1: display, all-caps, tracking amplio
-     Chakra Petch → Subtítulos H2/accent: bold uppercase, dorado
-     Montserrat   → Cuerpo, párrafos, quotes
-  */
   --font-display: 'Rajdhani', 'Bank Gothic', system-ui, sans-serif;
   --font-accent:  'Chakra Petch', system-ui, sans-serif;
   --font-body:    'Montserrat', system-ui, sans-serif;
-  --font-mono:    'Chakra Petch', monospace; /* Chakra Petch también para datos técnicos */
+  --font-mono:    'Chakra Petch', monospace;
 }
 
 :root {
-  /* ── Escala Tipográfica Fluid ── */
-  --text-hero:   clamp(3rem, 7vw, 6rem);      /* H1 hero — Rajdhani Light/Regular, tracked */
-  --text-title:  clamp(2rem, 4vw, 3.5rem);    /* H1 sección — Rajdhani, all-caps */
-  --text-accent: clamp(1rem, 2vw, 1.3rem);    /* H2 subtítulo — Chakra Petch Bold, dorado */
-  --text-sub:    clamp(1rem, 1.5vw, 1.15rem); /* Párrafo destacado */
-  --text-body:   1rem;                         /* Montserrat Regular */
-  --text-sm:     0.875rem;
+  /* ── Superficies (profundidad por planos, no por sombras) ── */
+  --surface-sunken:  #1a1a1a;
+  --surface-base:    var(--color-vb-dark);
+  --surface-raised:  #292929;
+  --surface-current: var(--surface-base); /* Se redefine por sección/tarjeta */
 
-  /* ── Letter Spacing (clave para el estilo Rajdhani) ── */
-  --tracking-display: 0.12em;   /* Títulos grandes muy espaciados — como en mockups */
-  --tracking-accent:  0.05em;   /* Subtítulos Chakra Petch */
-  --tracking-mono:    0.08em;   /* Datos técnicos, eyebrows */
+  /* ── Texto (todas las combinaciones ≥ 4.5:1 sobre las superficies oscuras) ── */
+  --text-primary: var(--color-vb-white);
+  --text-muted:   var(--color-vb-steel);
+  --text-subtle:  #8f959a;
+  --text-on-gold: var(--color-vb-dark);
 
-  /* ── Espaciado y Layout ── */
-  --section-pad-y:  clamp(4rem, 8vw, 7rem);
-  --section-pad-x:  clamp(1.25rem, 5vw, 5rem);
-  --max-width:      1280px;
-  --gap-grid:       1.5rem;
+  /* ── Filetes ── */
+  --line-subtle: rgba(174, 179, 184, 0.16);
+  --line-strong: rgba(174, 179, 184, 0.32);
+  --line-gold:   rgba(208, 181, 73, 0.55);
 
-  /* ── Geometría Angular (Brand Aesthetic) ── */
-  --clip-slash-sm:   polygon(0 0, 100% 0, 100% 85%, 97% 100%, 0 100%);
-  --clip-slash-md:   polygon(0 0, 100% 0, 100% 90%, 94% 100%, 0 100%);
-  --clip-angle-top:  polygon(0 5%, 4% 0, 100% 0, 100% 100%, 0 100%);
-  --clip-angle-both: polygon(0 0, 96% 0, 100% 5%, 100% 100%, 4% 100%, 0 95%);
+  /* ── Escala tipográfica ── */
+  --text-label:      0.75rem;                          /* 12px — mínimo para etiquetas */
+  --text-small:      0.875rem;
+  --text-body:       1rem;
+  --text-body-l:     clamp(1.0625rem, 1.1vw + 0.8rem, 1.1875rem);
+  --text-title:      clamp(1rem, 0.6vw + 0.85rem, 1.25rem);    /* Títulos de ítem — Chakra Petch */
+  --text-accent:     clamp(0.95rem, 0.9vw + 0.7rem, 1.3rem);    /* Subtítulo dorado */
+  --text-display-s:  clamp(1.75rem, 2.4vw + 1rem, 2.5rem);
+  --text-display-m:  clamp(2.25rem, 3.6vw + 1.1rem, 3.5rem);
+  --text-display-l:  clamp(2.75rem, 5vw + 1.2rem, 5rem);
+  --text-display-xl: clamp(3.5rem, 9vw + 0.5rem, 7.5rem);
 
-  /* ── Efectos y Sombras ── */
-  --transition-fast:   150ms ease;
-  --transition-base:   250ms ease;
-  --shadow-gold:       0 0 20px rgba(208, 181, 73, 0.15);
-  --shadow-gold-lg:    0 0 40px rgba(208, 181, 73, 0.22);
-  --border-gold:       1px solid rgba(208, 181, 73, 0.3);
-  --border-gold-hover: 1px solid rgba(208, 181, 73, 0.7);
-  --border-steel:      1px solid rgba(174, 179, 184, 0.15);
+  --tracking-display: 0.1em;
+  --tracking-accent:  0.05em;
+  --tracking-label:   0.16em;
+
+  /* ── Espaciado (base 4px) ── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+
+  --section-pad-y:       clamp(4rem, 8vw, 7.5rem);
+  --section-pad-y-tight: clamp(2.5rem, 4vw, 3.5rem);
+  --section-pad-x:       clamp(1.25rem, 5vw, 5rem);
+  --section-gap:         clamp(2.5rem, 5vw, 4rem); /* Título de sección → contenido */
+  --gutter:              clamp(1.25rem, 3vw, 2.5rem);
+  --max-width:           1280px;
+  --header-h:            4.5rem;
+
+  /* Breakpoints de referencia (en media queries): 480 · 768 · 1024 · 1280 */
+
+  /* ── Geometría angular: un único bisel, tamaño fijo, esquina inferior derecha ── */
+  --chamfer-sm: 10px;
+  --chamfer-md: 16px;
+  --chamfer-lg: 28px;
+  --chamfer-xl: 48px;
+
+  /* ── Movimiento ── */
+  --ease-out:        cubic-bezier(0.2, 0.7, 0.2, 1);
+  --transition-fast: 150ms var(--ease-out);
+  --transition-base: 240ms var(--ease-out);
 }
 
 /* ─────────────────────────────────────────────
-   BASE STYLES
+   BASE
    ───────────────────────────────────────────── */
 
 html {
-  scroll-behavior: smooth;
+  background-color: var(--surface-base);
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
-  background-color: #222222;
-  color: #FFFFFF;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-base);
+  color: var(--text-primary);
   font-family: var(--font-body);
   font-size: var(--text-body);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* ── Jerarquía Tipográfica ──
-   Basada en los mockups de identidad visual:
-   - H1: Rajdhani, weight 300–400, all-caps, tracking ancho → impacto visual alto
-   - H2: Chakra Petch Bold, uppercase, color dorado → subtítulo de sección
-   - H3: Chakra Petch SemiBold, blanco/acero → encabezado de tarjeta
-   - p:  Montserrat Regular → legibilidad máxima
-*/
-h1 {
-  font-family: var(--font-display);
-  font-weight: 300; /* Rajdhani Light — como en "OUR ROBOT", "IMPACT", "COMMUNITY" */
-  font-size: var(--text-title);
-  line-height: 1;
-  letter-spacing: var(--tracking-display);
-  text-transform: uppercase;
-  color: #FFFFFF;
+main { flex: 1; }
+
+::selection {
+  background: var(--color-vb-gold);
+  color: var(--text-on-gold);
 }
 
-h2 {
-  font-family: var(--font-accent);
-  font-weight: 700; /* Chakra Petch Bold — subtítulo dorado bajo el H1 */
-  font-size: var(--text-accent);
-  line-height: 1.1;
-  letter-spacing: var(--tracking-accent);
-  text-transform: uppercase;
-  color: var(--color-vb-gold);
-}
-
-h3 {
+/* Encabezados: valores por defecto neutros; los componentes aplican las clases vb-* */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
   font-family: var(--font-accent);
   font-weight: 600;
-  font-size: 1.05rem;
+  line-height: 1.15;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #FFFFFF;
-}
-
-h4, h5, h6 {
-  font-family: var(--font-accent);
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  color: #FFFFFF;
+  color: var(--text-primary);
+  text-wrap: balance;
 }
 
 p {
+  margin: 0;
   font-family: var(--font-body);
-  font-weight: 400;
-  color: var(--color-vb-steel);
+  color: var(--text-muted);
   line-height: 1.7;
+  text-wrap: pretty;
 }
 
 /* ─────────────────────────────────────────────
-   UTILIDADES DE LAYOUT
+   LAYOUT
    ───────────────────────────────────────────── */
 
 .site-container {
@@ -141,54 +157,207 @@ p {
   padding-inline: var(--section-pad-x);
 }
 
-.section-padding {
-  padding-block: var(--section-pad-y);
+.section-padding { padding-block: var(--section-pad-y); }
+.section-tight   { padding-block: var(--section-pad-y-tight); }
+.section-body    { margin-top: var(--section-gap); }
+
+.surface-sunken {
+  --surface-current: var(--surface-sunken);
+  background-color: var(--surface-sunken);
 }
 
-/* ── Tipografía Utility ── */
-.font-display { font-family: var(--font-display); }
-.font-accent  { font-family: var(--font-accent); }
-.font-body    { font-family: var(--font-body); }
+/* ─────────────────────────────────────────────
+   TIPOGRAFÍA DE MARCA
+   ───────────────────────────────────────────── */
 
-/* Eyebrow label — Chakra Petch, uppercase, dorado, tracking amplio */
-.eyebrow-label {
+/* Eyebrow — Chakra Petch, dorado, con guion técnico */
+.vb-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
   font-family: var(--font-accent);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: var(--tracking-mono);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-vb-gold);
 }
 
-/* Stat value — Rajdhani Bold */
-.stat-display {
+.vb-eyebrow::before {
+  content: "";
+  flex: none;
+  width: 1.5rem;
+  height: 2px;
+  background: currentColor;
+}
+
+/* Display — Rajdhani Light, mayúsculas, tracking amplio */
+.vb-display {
+  margin: 0;
   font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+.vb-display--xl { font-size: var(--text-display-xl); line-height: 0.88; }
+.vb-display--l  { font-size: var(--text-display-l); }
+.vb-display--m  { font-size: var(--text-display-m); }
+.vb-display--s  { font-size: var(--text-display-s); }
+
+/* Acento — Chakra Petch Bold, dorado: el par título + acento de la marca */
+.vb-accent {
+  margin: 0;
+  font-family: var(--font-accent);
+  font-size: var(--text-accent);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-accent);
+  text-transform: uppercase;
   color: var(--color-vb-gold);
 }
 
-/* ── Clip-path Utilities ── */
-.clip-slash-sm   { clip-path: var(--clip-slash-sm); }
-.clip-slash-md   { clip-path: var(--clip-slash-md); }
-.clip-angle-top  { clip-path: var(--clip-angle-top); }
-.clip-angle-both { clip-path: var(--clip-angle-both); }
+/* Título de ítem — Chakra Petch SemiBold */
+.vb-title {
+  margin: 0;
+  font-family: var(--font-accent);
+  font-size: var(--text-title);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* Entradilla — Montserrat, medida de lectura cómoda */
+.vb-lead {
+  margin: 0;
+  max-width: 58ch;
+  font-size: var(--text-body-l);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* Índice numérico — "01", "02"… */
+.vb-index {
+  font-family: var(--font-accent);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+/* ─────────────────────────────────────────────
+   BISEL (chamfer)
+   El corte se dibuja en pseudo-elementos para que:
+   - el filete siga la diagonal,
+   - el anillo de foco del propio elemento nunca se recorte.
+   Variables: --chamfer, --chamfer-fill, --chamfer-line
+   ───────────────────────────────────────────── */
+
+.vb-chamfer {
+  --chamfer: var(--chamfer-sm);
+  --chamfer-fill: var(--surface-current);
+  --chamfer-line: transparent;
+  position: relative;
+  isolation: isolate;
+}
+
+.vb-chamfer::before,
+.vb-chamfer::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  transition: background-color var(--transition-fast);
+}
+
+.vb-chamfer::before {
+  inset: 0;
+  background: var(--chamfer-line);
+  clip-path: polygon(
+    0 0, 100% 0,
+    100% calc(100% - var(--chamfer)),
+    calc(100% - var(--chamfer)) 100%,
+    0 100%
+  );
+}
+
+.vb-chamfer::after {
+  inset: 1px;
+  background: var(--chamfer-fill);
+  clip-path: polygon(
+    0 0, 100% 0,
+    100% calc(100% - var(--chamfer) + 0.6px),
+    calc(100% - var(--chamfer) + 0.6px) 100%,
+    0 100%
+  );
+}
 
 /* ─────────────────────────────────────────────
    ACCESIBILIDAD
    ───────────────────────────────────────────── */
 
 :focus-visible {
-  outline: 2px solid #D0B549;
+  outline: 2px solid var(--color-vb-gold);
   outline-offset: 3px;
-  border-radius: 2px;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 200;
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-vb-gold);
+  color: var(--text-on-gold);
+  font-family: var(--font-accent);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+main:focus { outline: none; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ─────────────────────────────────────────────
    SCROLLBAR
    ───────────────────────────────────────────── */
 
-::-webkit-scrollbar       { width: 5px; }
-::-webkit-scrollbar-track { background: #1a1a1a; }
-::-webkit-scrollbar-thumb { background: #8E782B; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #D0B549; }
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-sunken); }
+::-webkit-scrollbar-thumb { background: var(--color-vb-gold-deep); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-vb-gold); }

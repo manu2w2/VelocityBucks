@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import Icon from './Icon.svelte';
 
 	interface Props {
 		variant?: 'primary' | 'ghost' | 'outline';
@@ -7,6 +8,10 @@
 		size?: 'sm' | 'md' | 'lg';
 		type?: 'button' | 'submit';
 		disabled?: boolean;
+		/** Flecha de dirección al final del texto */
+		arrow?: boolean;
+		/** Ocupa todo el ancho disponible */
+		block?: boolean;
 		children: Snippet;
 		[key: string]: unknown;
 	}
@@ -17,89 +22,100 @@
 		size = 'md',
 		type = 'button',
 		disabled = false,
+		arrow = false,
+		block = false,
 		children,
 		...rest
 	}: Props = $props();
 </script>
 
+{#snippet inner()}
+	<span class="label">{@render children()}</span>
+	{#if arrow}<Icon name="arrow-right" size={18} strokeWidth={1.8} class="btn-arrow" />{/if}
+{/snippet}
+
 {#if href}
-	<a {href} class="btn btn-{variant} btn-{size}" {...rest}>
-		{@render children()}
+	<a {href} class="btn vb-chamfer btn-{variant} btn-{size}" class:block {...rest}>
+		{@render inner()}
 	</a>
 {:else}
-	<button {type} {disabled} class="btn btn-{variant} btn-{size}" {...rest}>
-		{@render children()}
+	<button {type} {disabled} class="btn vb-chamfer btn-{variant} btn-{size}" class:block {...rest}>
+		{@render inner()}
 	</button>
 {/if}
 
 <style>
+	/* Una sola forma para todas las variantes: bisel inferior derecho */
 	.btn {
+		--chamfer: var(--chamfer-sm);
 		display: inline-flex;
 		align-items: center;
-		gap: 0.5rem;
-		font-family: var(--font-body);
+		justify-content: center;
+		gap: var(--space-3);
+		font-family: var(--font-accent);
 		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		line-height: 1;
 		text-decoration: none;
+		white-space: nowrap;
 		cursor: pointer;
 		border: none;
-		transition:
-			background var(--transition-fast),
-			box-shadow var(--transition-fast),
-			transform var(--transition-fast);
-		letter-spacing: 0.01em;
-		clip-path: var(--clip-slash-sm);
+		background: none;
+		transition: color var(--transition-fast);
 	}
 
-	.btn:hover {
-		transform: translateY(-1px);
+	.block {
+		display: flex;
+		width: 100%;
 	}
 
-	.btn:active {
-		transform: translateY(0);
-	}
+	/* Tamaños — md y lg cumplen 44px de área táctil */
+	.btn-sm { min-height: 2.5rem; padding-inline: 1.125rem; font-size: 0.75rem; }
+	.btn-md { min-height: 2.875rem; padding-inline: 1.5rem; font-size: 0.8125rem; }
+	.btn-lg { min-height: 3.375rem; padding-inline: 2rem; font-size: 0.875rem; }
 
-	/* Sizes */
-	.btn-sm { padding: 0.4rem 1rem; font-size: 0.8rem; }
-	.btn-md { padding: 0.65rem 1.5rem; font-size: 0.9rem; }
-	.btn-lg { padding: 0.85rem 2rem; font-size: 1rem; }
-
-	/* Variants */
+	/* Primario — relleno oro, el color principal del equipo */
 	.btn-primary {
-		background: var(--color-vb-gold);
-		color: #222222;
+		--chamfer-fill: var(--color-vb-gold);
+		--chamfer-line: var(--color-vb-gold);
+		color: var(--text-on-gold);
 	}
 	.btn-primary:hover {
-		background: var(--color-vb-gold-light);
-		box-shadow: var(--shadow-gold-lg);
+		--chamfer-fill: var(--color-vb-gold-light);
+		--chamfer-line: var(--color-vb-gold-light);
 	}
 
+	/* Ghost — filete oro */
 	.btn-ghost {
-		background: transparent;
+		--chamfer-line: var(--line-gold);
 		color: var(--color-vb-gold);
-		border: var(--border-gold);
-		clip-path: none;
-		border-radius: 4px;
 	}
 	.btn-ghost:hover {
-		background: rgba(208, 181, 73, 0.1);
-		box-shadow: var(--shadow-gold);
+		--chamfer-line: var(--color-vb-gold);
+		--chamfer-fill: color-mix(in srgb, var(--color-vb-gold) 12%, var(--surface-current));
+		color: var(--color-vb-gold-light);
 	}
 
+	/* Outline — filete acero, acción secundaria neutra */
 	.btn-outline {
-		background: transparent;
-		color: #fff;
-		border: var(--border-steel);
-		clip-path: none;
-		border-radius: 4px;
+		--chamfer-line: var(--line-strong);
+		color: var(--text-primary);
 	}
 	.btn-outline:hover {
-		border-color: rgba(255,255,255,0.4);
-		background: rgba(255,255,255,0.05);
+		--chamfer-line: var(--color-vb-steel);
+		--chamfer-fill: color-mix(in srgb, var(--color-vb-white) 6%, var(--surface-current));
+	}
+
+	.btn :global(.btn-arrow) {
+		transition: transform var(--transition-fast);
+	}
+	.btn:hover :global(.btn-arrow) {
+		transform: translateX(3px);
 	}
 
 	.btn:disabled {
-		opacity: 0.4;
+		opacity: 0.45;
 		pointer-events: none;
 	}
 </style>
-

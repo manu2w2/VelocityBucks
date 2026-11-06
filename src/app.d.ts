@@ -8,6 +8,10 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	/** Inyectadas por Vite en vite.config.ts */
+	const __SITE_URL__: string;
+	const __BASE_PATH__: string;
 }
 
 export {};

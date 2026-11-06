@@ -1,207 +1,147 @@
 <script lang="ts">
-  import { resolve } from "$app/paths";
+	import Logo from '#lib/components/ui/Logo.svelte';
+	import Icon from '#lib/components/ui/Icon.svelte';
+	import { i18n } from '#lib/i18n.svelte.ts';
+	import { SOCIAL } from '#lib/site.ts';
 
-  const socialLinks = [
-    {
-      label: "Instagram",
-      href: "https://instagram.com/velocitybucks",
-      icon: "IG",
-    },
-    {
-      label: "GitHub",
-      href: "https://github.com/velocitybucks39347",
-      icon: "GH",
-    },
-  ];
+	const t = $derived(i18n.t);
+	const siteLinks = $derived([
+		{ path: '/', label: t.nav.home },
+		...t.nav.links
+	]);
 
-  const year = new Date().getFullYear();
+	const year = new Date().getFullYear();
 </script>
 
-<footer class="site-footer">
-  <div class="site-container footer-inner">
-    <!-- Identity Column -->
-    <div class="footer-brand">
-      <div class="footer-logo">
-        <span class="logo-mark" aria-hidden="true">VB</span>
-        <div>
-          <p class="footer-name">Velocity Bucks</p>
-          <p class="footer-number">FTC #39347</p>
-        </div>
-      </div>
-      <p class="footer-tagline">Ingeniería en movimiento.</p>
-    </div>
+<footer class="site-footer surface-sunken">
+	<div class="site-container footer-inner">
+		<div class="brand">
+			<!-- 5 toques seguidos activan el easter egg -->
+			<span data-buck-trigger><Logo /></span>
+			<p class="tagline">{t.footer.tagline}</p>
+		</div>
 
-    <!-- Navigation Column -->
-    <nav aria-label="Navegación del pie de página">
-      <p class="footer-nav-title">Sitio</p>
-      <ul role="list">
-        <li><a href={resolve("/")}>Inicio</a></li>
-        <li><a href={resolve("/nosotros")}>Nosotros</a></li>
-        <li><a href={resolve("/ingenieria")}>Ingeniería</a></li>
-        <li><a href={resolve("/impacto")}>Impacto</a></li>
-        <li><a href={resolve("/patrocinadores")}>Patrocinadores</a></li>
-      </ul>
-    </nav>
+		<nav class="col" aria-label={t.footer.navLabel}>
+			<p class="col-title">{t.footer.siteTitle}</p>
+			<ul role="list">
+				{#each siteLinks as link (link.path)}
+					<li><a href={i18n.href(link.path)}>{link.label}</a></li>
+				{/each}
+			</ul>
+		</nav>
 
-    <!-- Social Column -->
-    <div class="footer-social">
-      <p class="footer-nav-title">Síguenos</p>
-      <ul role="list">
-        {#each socialLinks as link}
-          <li>
-            <a
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={link.label}
-            >
-              <span aria-hidden="true">[{link.icon}]</span>
-              {link.label}
-            </a>
-          </li>
-        {/each}
-      </ul>
-    </div>
-  </div>
+		<div class="col">
+			<p class="col-title">{t.footer.followTitle}</p>
+			<ul role="list">
+				{#each SOCIAL as link (link.href)}
+					<li>
+						<a href={link.href} target="_blank" rel="noopener noreferrer" class="social">
+							<Icon name={link.icon} size={18} />
+							{link.label}
+							<span class="sr-only">{t.common.newTab}</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	</div>
 
-  <!-- Legal -->
-  <div class="footer-legal">
-    <div class="site-container">
-      <p class="disclaimer">
-        FIRST®, FIRST® Tech Challenge y FIRST® Robotics Competition son
-        marcas registradas de For Inspiration and Recognition of Science and
-        Technology (FIRST). Velocity Bucks #39347 es un equipo independiente.
-      </p>
-      <p class="copyright">
-        © {year} Velocity Bucks #39347. Todos los derechos reservados.
-      </p>
-    </div>
-  </div>
+	<div class="legal">
+		<div class="site-container legal-inner">
+			<p class="disclaimer">{t.footer.disclaimer}</p>
+			<p class="copyright">© {year} Velocity Bucks #39347. {t.footer.rights}</p>
+		</div>
+	</div>
 </footer>
 
 <style>
-  .site-footer {
-    border-top: var(--border-steel);
-    background: #1a1a1a;
-  }
+	.footer-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-8) var(--gutter);
+		padding-block: clamp(3rem, 6vw, 4.5rem);
+	}
 
-  .footer-inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding-block: 3rem;
-  }
+	.brand {
+		grid-column: 1 / -1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
 
-  @media (min-width: 640px) {
-    .footer-inner {
-      grid-template-columns: 2fr 1fr 1fr;
-    }
-  }
+	@media (min-width: 768px) {
+		.footer-inner {
+			grid-template-columns: 6fr 3fr 3fr;
+		}
 
-  /* Brand */
-  .footer-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
+		.brand {
+			grid-column: auto;
+		}
+	}
 
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-  }
+	.tagline {
+		font-size: var(--text-small);
+		font-style: italic;
+	}
 
-  .logo-mark {
-    display: grid;
-    place-items: center;
-    width: 2rem;
-    height: 2rem;
-    background: var(--color-vb-gold);
-    color: #222222;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.75rem;
-    clip-path: var(--clip-angle-both);
-    flex-shrink: 0;
-  }
+	.col-title {
+		margin-bottom: var(--space-4);
+		font-family: var(--font-accent);
+		font-size: var(--text-label);
+		font-weight: 600;
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
+		color: var(--color-vb-gold);
+	}
 
-  .footer-name {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #fff;
-    margin: 0;
-    line-height: 1.2;
-  }
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
 
-  .footer-number {
-    font-size: 0.7rem;
-    color: var(--color-vb-gold);
-    letter-spacing: 0.08em;
-    margin: 0;
-  }
+	a {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		min-height: 2rem;
+		font-size: var(--text-small);
+		color: var(--text-muted);
+		text-decoration: none;
+		transition: color var(--transition-fast);
+	}
 
-  .footer-tagline {
-    font-size: 0.875rem;
-    color: var(--color-vb-steel);
-    font-style: italic;
-    margin: 0;
-  }
+	a:hover {
+		color: var(--color-vb-gold);
+	}
 
-  /* Nav columns */
-  .footer-nav-title {
-    font-family: var(--font-display);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-vb-gold);
-    margin: 0 0 1rem;
-  }
+	.legal {
+		border-top: 1px solid var(--line-subtle);
+	}
 
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+	.legal-inner {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		padding-block: var(--space-5);
+	}
 
-  a {
-    font-size: 0.875rem;
-    color: var(--color-vb-steel);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
+	.disclaimer,
+	.copyright {
+		font-size: var(--text-label);
+		line-height: 1.6;
+		color: var(--text-subtle);
+	}
 
-  a:hover {
-    color: var(--color-vb-gold);
-  }
+	.disclaimer {
+		max-width: 80ch;
+	}
 
-  .footer-social {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Legal */
-  .footer-legal {
-    border-top: var(--border-steel);
-    padding-block: 1.5rem;
-  }
-
-  .disclaimer {
-    font-size: 0.75rem;
-    color: rgba(174, 179, 184, 0.6);
-    line-height: 1.6;
-    margin: 0 0 0.5rem;
-    max-width: 72ch;
-  }
-
-  .copyright {
-    font-size: 0.75rem;
-    color: rgba(174, 179, 184, 0.4);
-    margin: 0;
-    font-family: var(--font-mono);
-  }
+	.copyright {
+		font-family: var(--font-accent);
+		letter-spacing: 0.04em;
+	}
 </style>
