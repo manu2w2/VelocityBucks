@@ -1,0 +1,39 @@
+{
+  "tiers": [
+    {
+      "id": "platinum",
+      "name": "Platino",
+      "description": "Aliado estratégico principal",
+      "benefits": [
+        "Logo principal en robot y uniformes",
+        "Mención en todos los materiales de prensa",
+        "Presencia destacada en sitio web",
+        "Reporte de impacto personalizado",
+        "Visita al taller del equipo"
+      ]
+    },
+    {
+      "id": "gold",
+      "name": "Oro",
+      "description": "Patrocinador de alta visibilidad",
+      "benefits": [
+        "Logo en robot y uniformes",
+        "Mención en materiales digitales",
+        "Presencia en sitio web",
+        "Reporte de impacto"
+      ]
+    },
+    {
+      "id": "silver",
+      "name": "Plata",
+      "description": "Patrocinador de apoyo",
+      "benefits": [
+        "Logo en uniformes",
+        "Mención en redes sociales",
+        "Presencia en sitio web"
+      ]
+    }
+  ],
+  "current_sponsors": []
+}
+

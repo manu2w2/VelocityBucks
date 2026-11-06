@@ -1,0 +1,27 @@
+[
+  {
+    "value": "39347",
+    "label": "Número de Equipo",
+    "prefix": "#",
+    "suffix": ""
+  },
+  {
+    "value": "10",
+    "label": "Integrantes",
+    "prefix": "",
+    "suffix": "+"
+  },
+  {
+    "value": "500",
+    "label": "Horas de Ingeniería",
+    "prefix": "",
+    "suffix": "h"
+  },
+  {
+    "value": "200",
+    "label": "Personas Impactadas",
+    "prefix": "",
+    "suffix": "+"
+  }
+]
+

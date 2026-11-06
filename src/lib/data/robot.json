@@ -1,0 +1,42 @@
+{
+  "season": "INTO THE DEEP 2024-2025",
+  "name": "Nombre del Robot",
+  "specs": {
+    "chassis": "Gobilda Strafer Kit (Mecanum 4WD)",
+    "drivebase": "Mecanum Wheels — Omnidireccional",
+    "dimensions": "18\" x 18\" x 18\"",
+    "weight": "~12 kg",
+    "vision": "Limelight 3G (AprilTags + ML Pipeline)",
+    "control": "REV Control Hub + Expansion Hub",
+    "software": "FTC SDK (Java) + Road Runner 1.0",
+    "mechanisms": ["Intake Rotativa", "Outtake Lineal", "Arm de Depósito"]
+  },
+  "process_steps": [
+    {
+      "step": 1,
+      "title": "Análisis del Juego",
+      "description": "Estudio del reglamento, análisis de puntuación y definición de estrategia competitiva."
+    },
+    {
+      "step": 2,
+      "title": "Diseño CAD",
+      "description": "Modelado 3D en Onshape. Iteraciones de diseño mecánico con validación por subequipo."
+    },
+    {
+      "step": 3,
+      "title": "Prototipado",
+      "description": "Manufactura de prototipos funcionales para validar hipótesis de diseño mecánico."
+    },
+    {
+      "step": 4,
+      "title": "Integración y Pruebas",
+      "description": "Ensamble del robot completo, pruebas de rendimiento y detección de puntos de falla."
+    },
+    {
+      "step": 5,
+      "title": "Iteración",
+      "description": "Refinamiento basado en datos de pruebas. Mejoras continuas hasta la competencia."
+    }
+  ]
+}
+

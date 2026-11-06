@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   VELOCITY BUCKS #39347 — Design System Tokens
+   Typography: Rajdhani / Chakra Petch / Montserrat
+   ───────────────────────────────────────────── */
+
+@theme {
+  /* ── Paleta de Color ── */
+  --color-vb-gold:       #D0B549;
+  --color-vb-dark:       #222222;
+  --color-vb-white:      #FFFFFF;
+  --color-vb-steel:      #AEB3B8;
+  --color-vb-gold-light: #F1E5AE;
+  --color-vb-gold-deep:  #8E782B;
+  --color-vb-gray-mid:   #9A9A9A; /* Para fondos grises medios como en los mockups */
+
+  /* ── Tipografía (actualizada a identidad oficial) ──
+     Rajdhani     → Títulos H1: display, all-caps, tracking amplio
+     Chakra Petch → Subtítulos H2/accent: bold uppercase, dorado
+     Montserrat   → Cuerpo, párrafos, quotes
+  */
+  --font-display: 'Rajdhani', 'Bank Gothic', system-ui, sans-serif;
+  --font-accent:  'Chakra Petch', system-ui, sans-serif;
+  --font-body:    'Montserrat', system-ui, sans-serif;
+  --font-mono:    'Chakra Petch', monospace; /* Chakra Petch también para datos técnicos */
+}
+
+:root {
+  /* ── Escala Tipográfica Fluid ── */
+  --text-hero:   clamp(3rem, 7vw, 6rem);      /* H1 hero — Rajdhani Light/Regular, tracked */
+  --text-title:  clamp(2rem, 4vw, 3.5rem);    /* H1 sección — Rajdhani, all-caps */
+  --text-accent: clamp(1rem, 2vw, 1.3rem);    /* H2 subtítulo — Chakra Petch Bold, dorado */
+  --text-sub:    clamp(1rem, 1.5vw, 1.15rem); /* Párrafo destacado */
+  --text-body:   1rem;                         /* Montserrat Regular */
+  --text-sm:     0.875rem;
+
+  /* ── Letter Spacing (clave para el estilo Rajdhani) ── */
+  --tracking-display: 0.12em;   /* Títulos grandes muy espaciados — como en mockups */
+  --tracking-accent:  0.05em;   /* Subtítulos Chakra Petch */
+  --tracking-mono:    0.08em;   /* Datos técnicos, eyebrows */
+
+  /* ── Espaciado y Layout ── */
+  --section-pad-y:  clamp(4rem, 8vw, 7rem);
+  --section-pad-x:  clamp(1.25rem, 5vw, 5rem);
+  --max-width:      1280px;
+  --gap-grid:       1.5rem;
+
+  /* ── Geometría Angular (Brand Aesthetic) ── */
+  --clip-slash-sm:   polygon(0 0, 100% 0, 100% 85%, 97% 100%, 0 100%);
+  --clip-slash-md:   polygon(0 0, 100% 0, 100% 90%, 94% 100%, 0 100%);
+  --clip-angle-top:  polygon(0 5%, 4% 0, 100% 0, 100% 100%, 0 100%);
+  --clip-angle-both: polygon(0 0, 96% 0, 100% 5%, 100% 100%, 4% 100%, 0 95%);
+
+  /* ── Efectos y Sombras ── */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --shadow-gold:       0 0 20px rgba(208, 181, 73, 0.15);
+  --shadow-gold-lg:    0 0 40px rgba(208, 181, 73, 0.22);
+  --border-gold:       1px solid rgba(208, 181, 73, 0.3);
+  --border-gold-hover: 1px solid rgba(208, 181, 73, 0.7);
+  --border-steel:      1px solid rgba(174, 179, 184, 0.15);
+}
+
+/* ─────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #222222;
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Jerarquía Tipográfica ──
+   Basada en los mockups de identidad visual:
+   - H1: Rajdhani, weight 300–400, all-caps, tracking ancho → impacto visual alto
+   - H2: Chakra Petch Bold, uppercase, color dorado → subtítulo de sección
+   - H3: Chakra Petch SemiBold, blanco/acero → encabezado de tarjeta
+   - p:  Montserrat Regular → legibilidad máxima
+*/
+h1 {
+  font-family: var(--font-display);
+  font-weight: 300; /* Rajdhani Light — como en "OUR ROBOT", "IMPACT", "COMMUNITY" */
+  font-size: var(--text-title);
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+h2 {
+  font-family: var(--font-accent);
+  font-weight: 700; /* Chakra Petch Bold — subtítulo dorado bajo el H1 */
+  font-size: var(--text-accent);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-accent);
+  text-transform: uppercase;
+  color: var(--color-vb-gold);
+}
+
+h3 {
+  font-family: var(--font-accent);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+h4, h5, h6 {
+  font-family: var(--font-accent);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+
+p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--color-vb-steel);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────────
+   UTILIDADES DE LAYOUT
+   ───────────────────────────────────────────── */
+
+.site-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--section-pad-x);
+}
+
+.section-padding {
+  padding-block: var(--section-pad-y);
+}
+
+/* ── Tipografía Utility ── */
+.font-display { font-family: var(--font-display); }
+.font-accent  { font-family: var(--font-accent); }
+.font-body    { font-family: var(--font-body); }
+
+/* Eyebrow label — Chakra Petch, uppercase, dorado, tracking amplio */
+.eyebrow-label {
+  font-family: var(--font-accent);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-vb-gold);
+}
+
+/* Stat value — Rajdhani Bold */
+.stat-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-vb-gold);
+}
+
+/* ── Clip-path Utilities ── */
+.clip-slash-sm   { clip-path: var(--clip-slash-sm); }
+.clip-slash-md   { clip-path: var(--clip-slash-md); }
+.clip-angle-top  { clip-path: var(--clip-angle-top); }
+.clip-angle-both { clip-path: var(--clip-angle-both); }
+
+/* ─────────────────────────────────────────────
+   ACCESIBILIDAD
+   ───────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid #D0B549;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────
+   SCROLLBAR
+   ───────────────────────────────────────────── */
+
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #8E782B; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #D0B549; }

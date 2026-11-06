@@ -1,0 +1,42 @@
+{
+  "members": [
+    {
+      "name": "Miembro 1",
+      "role": "Capitán / Lead Programmer",
+      "area": "Software",
+      "photo": null
+    },
+    {
+      "name": "Miembro 2",
+      "role": "Lead Mechanical Engineer",
+      "area": "Mecánica",
+      "photo": null
+    },
+    {
+      "name": "Miembro 3",
+      "role": "Lead Electrical Engineer",
+      "area": "Electrónica",
+      "photo": null
+    },
+    {
+      "name": "Miembro 4",
+      "role": "Outreach Lead",
+      "area": "Outreach",
+      "photo": null
+    },
+    {
+      "name": "Miembro 5",
+      "role": "Business Lead",
+      "area": "Business",
+      "photo": null
+    }
+  ],
+  "mentors": [
+    {
+      "name": "Mentor 1",
+      "role": "Lead Mentor",
+      "area": "General"
+    }
+  ]
+}
+

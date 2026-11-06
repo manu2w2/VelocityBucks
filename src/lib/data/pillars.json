@@ -1,0 +1,39 @@
+[
+  {
+    "id": "velocidad",
+    "title": "Velocidad",
+    "description": "Actuamos con agilidad y determinación. Cada decisión cuenta y el tiempo es nuestro recurso más valioso.",
+    "icon": "⚡"
+  },
+  {
+    "id": "excelencia",
+    "title": "Excelencia",
+    "description": "No aceptamos el promedio. Cada iteración de diseño y cada línea de código debe superar a la anterior.",
+    "icon": "🎯"
+  },
+  {
+    "id": "trabajo-equipo",
+    "title": "Trabajo en Equipo",
+    "description": "Nuestros logros son colectivos. La sinergia entre disciplinas es nuestra mayor ventaja competitiva.",
+    "icon": "🤝"
+  },
+  {
+    "id": "formacion-tecnica",
+    "title": "Formación Técnica",
+    "description": "Aprendemos haciendo. Cada temporada es una oportunidad para dominar nuevas tecnologías y metodologías.",
+    "icon": "📐"
+  },
+  {
+    "id": "disciplina",
+    "title": "Disciplina",
+    "description": "El proceso importa tanto como el resultado. Consistencia, puntualidad y rigor son nuestra cultura de trabajo.",
+    "icon": "🏆"
+  },
+  {
+    "id": "descubrimiento",
+    "title": "Descubrimiento",
+    "description": "La curiosidad es nuestro motor. Exploramos soluciones no convencionales y cuestionamos lo establecido.",
+    "icon": "🔍"
+  }
+]
+
