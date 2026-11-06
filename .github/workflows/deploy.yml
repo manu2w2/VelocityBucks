@@ -2,24 +2,20 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: 'main' # o 'master' según el nombre de tu rama principal
-
-  # Permite ejecutar el flujo manualmente desde la pestaña Actions
+    branches: "main"
   workflow_dispatch:
 
-# Permite que el token de GITHUB_TOKEN despliegue en Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Permite una sola implementación simultánea
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
-  deploy_site:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -31,23 +27,22 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build site
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
+          BASE_PATH: "/${{ github.event.repository.name }}"
         run: npm run build
 
-      - name: Upload Artifacts
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/'
+          path: "build/"
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
