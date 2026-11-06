@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 
 	const navLinks = [
-		{ href: '/nosotros', label: 'Nosotros' },
-		{ href: '/ingenieria', label: 'Ingeniería' },
-		{ href: '/impacto', label: 'Impacto' },
-		{ href: '/patrocinadores', label: 'Patrocinadores' }
+		{ href: resolve('/nosotros'), label: 'Nosotros' },
+		{ href: resolve('/ingenieria'), label: 'Ingeniería' },
+		{ href: resolve('/impacto'), label: 'Impacto' },
+		{ href: resolve('/patrocinadores'), label: 'Patrocinadores' }
 	];
 
 	let mobileOpen = $state(false);
@@ -26,7 +27,7 @@
 <header class="site-header">
 	<nav class="site-container nav-inner" aria-label="Navegación principal">
 		<!-- Logo -->
-		<a href="/" class="logo-link" onclick={closeMobile} aria-label="Velocity Bucks — Inicio">
+		<a href={resolve('/')} class="logo-link" onclick={closeMobile} aria-label="Velocity Bucks — Inicio">
 			<span class="logo-mark" aria-hidden="true">VB</span>
 			<span class="logo-text">
 				Velocity Bucks
@@ -52,7 +53,7 @@
 
 		<!-- CTA + Mobile Toggle -->
 		<div class="nav-actions">
-			<a href="/patrocinadores" class="btn-ghost-sm">Contáctanos</a>
+			<a href={resolve('/patrocinadores')} class="btn-ghost-sm">Contáctanos</a>
 			<button
 				class="mobile-toggle"
 				onclick={toggleMobile}
@@ -81,7 +82,7 @@
 					</li>
 				{/each}
 				<li>
-					<a href="/patrocinadores" class="mobile-cta" onclick={closeMobile}>
+					<a href={resolve('/patrocinadores')} class="mobile-cta" onclick={closeMobile}>
 						Contáctanos
 					</a>
 				</li>
