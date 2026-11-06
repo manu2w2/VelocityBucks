@@ -42,15 +42,15 @@ export const PAGES = [
  * Vacío = la cuenta atrás muestra "Fecha por confirmar".
  */
 export const NEXT_EVENT = {
-	name: { es: '', en: '' },
-	venue: '',
-	date: ''
+	name: { es: 'Regional Yucatán — Mérida', en: 'Yucatan Regional — Merida' },
+	venue: 'Tecmilenio Mérida',
+	date: '2027-01-15T07:00:00-06:00'
 };
 
 export type PagePath = (typeof PAGES)[number];
 
 export const SOCIAL = [
-	{ label: 'Instagram', handle: '@velocitybucks', href: 'https://instagram.com/velocitybucks', icon: 'instagram' },
+	{ label: 'Instagram', handle: '@velocity.bucks', href: 'https://instagram.com/velocity.bucks', icon: 'instagram' },
 	{ label: 'GitHub', handle: 'velocitybucks39347', href: 'https://github.com/velocitybucks39347', icon: 'github' }
 ] as const;
 

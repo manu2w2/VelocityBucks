@@ -1,15 +1,15 @@
 {
-  "season": "INTO THE DEEP 2024-2025",
+  "season": "BIOBUZZ 2026-2027",
   "name": "Nombre del Robot",
   "specs": {
-    "chassis": "Gobilda Strafer Kit (Mecanum 4WD)",
+    "chassis": "custom modular parralel chassis",
     "drivebase": "Mecanum Wheels — Omnidireccional",
     "dimensions": "18\" x 18\" x 18\"",
     "weight": "~12 kg",
-    "vision": "Limelight 3G (AprilTags + ML Pipeline)",
-    "control": "REV Control Hub + Expansion Hub",
-    "software": "FTC SDK (Java) + Road Runner 1.0",
-    "mechanisms": ["Intake Rotativa", "Outtake Lineal", "Arm de Depósito"]
+    "vision": "Limelight 3A (Hive tip detection)",
+    "control": "Pinpoint computer + odometry wheels",
+    "software": "FTC sdk with parts of Solverls Libs + PedroPathing",
+    "mechanisms": ["Intake Rotativa", "Adjustable Shooter", "Flower opener"]
   },
   "process_steps": [
     {

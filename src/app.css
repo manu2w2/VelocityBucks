@@ -18,7 +18,7 @@
   /* Derivado del oro profundo: solo para texto sobre paneles oro/acero (contraste AA) */
   --color-vb-gold-ink:   #4A3E14;
 
-  --font-display: 'Rajdhani', 'Bank Gothic', system-ui, sans-serif;
+  --font-display: 'Rajdhani', system-ui, sans-serif;
   --font-accent:  'Chakra Petch', system-ui, sans-serif;
   --font-body:    'Montserrat', system-ui, sans-serif;
   --font-mono:    'Chakra Petch', monospace;

@@ -55,7 +55,7 @@ const es = {
 
 	prefooter: {
 		label: 'Filosofía del equipo',
-		quote: 'Solo se llega rápido, pero juntos se llega más lejos.'
+		quote: 'La unión es nuestra fuerza, la velocidad nuestra esencia'
 	},
 
 	logoAlt: 'Logotipo de Velocity Bucks',

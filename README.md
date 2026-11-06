@@ -22,15 +22,15 @@ npm run dossier:pdf  # vuelve a generar los PDF del dossier (ver más abajo)
 
 ## Estructura
 
-| Ruta | Contenido |
-| --- | --- |
-| `src/lib/content/es.ts` | **Todos los textos en español.** |
-| `src/lib/content/en.ts` | Todos los textos en inglés. Debe tener la misma estructura que `es.ts` (TypeScript avisa si falta algo). |
-| `src/lib/site.ts` | Configuración general: temporada, número de equipo, redes sociales, vídeo y PDFs. |
-| `src/routes/[[lang=lang]]/` | Páginas. Cada página existe en los dos idiomas automáticamente. |
-| `src/lib/components/` | Componentes reutilizables (cabecera, pie, botones, etc.). |
-| `static/` | Archivos que se publican tal cual: logotipos, imagen para redes, PDFs del dossier. |
-| `scripts/` | Generador de los PDF del dossier. |
+| Ruta                        | Contenido                                                                                                |
+| --------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `src/lib/content/es.ts`     | **Todos los textos en español.**                                                                         |
+| `src/lib/content/en.ts`     | Todos los textos en inglés. Debe tener la misma estructura que `es.ts` (TypeScript avisa si falta algo). |
+| `src/lib/site.ts`           | Configuración general: temporada, número de equipo, redes sociales, vídeo y PDFs.                        |
+| `src/routes/[[lang=lang]]/` | Páginas. Cada página existe en los dos idiomas automáticamente.                                          |
+| `src/lib/components/`       | Componentes reutilizables (cabecera, pie, botones, etc.).                                                |
+| `static/`                   | Archivos que se publican tal cual: logotipos, imagen para redes, PDFs del dossier.                       |
+| `scripts/`                  | Generador de los PDF del dossier.                                                                        |
 
 ## Tareas habituales
 
@@ -83,10 +83,6 @@ El comando compila el sitio, abre un servidor local temporal, imprime la versió
 Si se te olvida, cada `npm run build` (también en el hosting) muestra un aviso cuando los PDF no corresponden al contenido actual. El aviso no detiene la compilación.
 
 ## Publicar el sitio
-
-### Netlify (configuración actual)
-
-`netlify.toml` ya indica el comando (`npm run build`) y la carpeta (`build`). Netlify proporciona la URL pública automáticamente.
 
 ### Cualquier otro hosting
 

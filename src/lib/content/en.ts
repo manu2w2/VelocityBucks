@@ -55,7 +55,7 @@ const en: Content = {
 
 	prefooter: {
 		label: 'Team philosophy',
-		quote: 'Alone you go fast, but together you go further.'
+		quote: 'Together we strive, with velocity we thrive'
 	},
 
 	logoAlt: 'Velocity Bucks logo',
@@ -248,16 +248,16 @@ const en: Content = {
 		renderLabel: 'Robot CAD render',
 		specsTitle: 'Technical specs',
 		specs: [
-			{ label: 'Chassis', value: 'Gobilda Strafer Kit (Mecanum 4WD)' },
+			{ label: 'Chassis', value: 'Modular Custom Parralel Plate Chassis' },
 			{ label: 'Drivebase', value: 'Mecanum Wheels — Omnidirectional' },
 			{ label: 'Dimensions', value: '18" x 18" x 18"' },
 			{ label: 'Approx. weight', value: '~12 kg' },
-			{ label: 'Vision system', value: 'Limelight 3G (AprilTags + ML Pipeline)' },
-			{ label: 'Control', value: 'REV Control Hub + Expansion Hub' },
-			{ label: 'Software / Pathing', value: 'FTC SDK (Java) + Road Runner 1.0' }
+			{ label: 'Vision system', value: 'Limelight 3a (Hive tip detection)' },
+			{ label: 'Control', value: 'Pinpoint computer + Odometry Wheels' },
+			{ label: 'Software / Pathing', value: 'FTC SDK (Java) + Solverls Libs + PedroPathing' }
 		],
-		mechanismsLabel: 'Main mechanisms',
-		mechanisms: ['Rotary Intake', 'Linear Outtake', 'Deposit Arm'],
+		mechanismsLabel: 'Main Mechanisms',
+		mechanisms: ['Robot wide rotatory intake', 'Adjustable Shooter', 'Flower opener'],
 		process: {
 			eyebrow: 'Methodology',
 			title: 'Engineering Cycle',
