@@ -84,9 +84,7 @@ Si se te olvida, cada `npm run build` (también en el hosting) muestra un aviso 
 
 ## Publicar el sitio
 
-### Cualquier otro hosting
-
-El sitio no depende de ningún servicio de Netlify. Para publicarlo en otro sitio (GitHub Pages, Cloudflare Pages, Vercel, un servidor propio…):
+ Para publicarlo en otro sitio (GitHub Pages, Cloudflare Pages, Vercel, un servidor propio…):
 
 1. Define la variable de entorno `SITE_URL` con la dirección pública, sin barra final (por ejemplo `https://www.velocitybucks.com`). Se usa en las URL canónicas, el sitemap, las etiquetas para redes sociales y el dossier. Si no se define, se usa la dirección de Netlify.
 2. Si el sitio vive en un subdirectorio (típico en GitHub Pages: `usuario.github.io/velocity-bucks`), define también `BASE_PATH=/velocity-bucks`.
