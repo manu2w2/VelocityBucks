@@ -2,7 +2,7 @@
  * Configuración global del sitio — valores independientes del idioma.
  */
 
-/** URL pública del sitio (la inyecta Netlify en el build mediante la variable URL). */
+
 export const SITE_URL: string = __SITE_URL__;
 
 /** Ruta base (vacía salvo que se despliegue en un subdirectorio). */
@@ -13,8 +13,8 @@ export const BASE_PATH: string = __BASE_PATH__;
  * Al cambiar de temporada basta con editar estos dos valores (y volver a generar los PDF del dossier).
  */
 export const SEASON = {
-	name: 'DECODE',
-	years: '2025–2026'
+	name: 'BIOBUZZ',
+	years: '2026–2027'
 };
 
 export const TEAM = {

@@ -327,7 +327,7 @@ const es = {
 			venuePending: 'Sede por confirmar',
 			namePending: 'Evento por confirmar',
 			datePending: 'Fecha por confirmar',
-			count: 4
+			count: 3
 		},
 		awards: {
 			eyebrow: 'Reconocimientos',
@@ -335,7 +335,7 @@ const es = {
 			accent: 'Logros de la temporada',
 			slot: 'Premio por anunciar',
 			slotNote: 'Espacio reservado para los reconocimientos obtenidos en competencia.',
-			count: 3
+			count: 4
 		}
 	},
 

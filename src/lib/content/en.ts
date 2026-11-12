@@ -62,9 +62,9 @@ const en: Content = {
 
 	stats: [
 		{ value: '39347', label: 'Team Number', prefix: '#', suffix: '' },
-		{ value: '10', label: 'Members', prefix: '', suffix: '+' },
-		{ value: '500', label: 'Engineering Hours', prefix: '', suffix: 'h' },
-		{ value: '200', label: 'People Reached', prefix: '', suffix: '+' }
+		{ value: '5', label: 'Members', prefix: '', suffix: '+' },
+		{ value: '200', label: 'Engineering Hours', prefix: '', suffix: 'h' },
+		{ value: '100', label: 'People Reached', prefix: '', suffix: '+' }
 	] as Metric[],
 
 	pillars: [
@@ -347,7 +347,7 @@ const en: Content = {
 		stats: [
 			{ value: null, label: 'Workshops delivered' },
 			{ value: null, label: 'Schools visited' },
-			{ value: null, label: 'Volunteer hours' },
+			{ value: "10+", label: 'Volunteer hours' },
 			{ value: null, label: 'Teams mentored' }
 		] as Metric[],
 		listLabel: 'Impact initiatives',
